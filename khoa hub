@@ -1,0 +1,65 @@
+-- [[ SCRIPT HUB BY KHOA - BANANA STYLE ]] --
+
+-- 1. Gọi Thư viện UI (Dùng thư viện Orion Library cực mượt và đẹp mắt)
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+-- 2. Tạo Cửa Sổ Chính (Window)
+local Window = OrionLib:MakeWindow({
+    Name = "Khoa Hub 🍌 | Blox Fruits", 
+    HidePremium = false, 
+    SaveConfig = true, 
+    ConfigFolder = "KhoaHubConfig",
+    IntroText = "Loading Khoa Hub..."
+})
+
+-- 3. Tạo các Tab chức năng bên trái Menu
+local FarmTab = Window:MakeTab({
+    Name = "Auto Farm",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local FruitTab = Window:MakeTab({
+    Name = "Trái Ác Quỷ",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- 4. THÊM CHỨC NĂNG VÀO TAB "AUTO FARM"
+FarmTab:AddToggle({
+    Name = "Auto Farm Level (Bật/Tắt)",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoFarm = Value
+        while _G.AutoFarm do
+            task.wait(0.1)
+            -- Đây là nơi bạn sẽ chèn code logic Auto Farm (Gom quái, đánh quái)
+            print("Đang tự động cày Level...")
+        end
+    end    
+})
+
+FarmTab:AddButton({
+    Name = "Gom Quái Siêu Tốc (Fast Attack)",
+    Callback = function()
+        -- Chèn code Fast Attack vào đây
+        OrionLib:MakeNotification({
+            Name = "Khoa Hub Thông Báo",
+            Content = "Đã kích hoạt Fast Attack thành công!",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+    end
+})
+
+-- 5. THÊM CHỨC NĂNG VÀO TAB "TRÁI ÁC QUỶ"
+FruitTab:AddButton({
+    Name = "Dịch chuyển nhặt Trái Ác Quỷ (Fruit Sniper)",
+    Callback = function()
+        -- Chèn code quét tọa độ và Teleport đến chỗ trái ác quỷ
+        print("Đang quét tìm trái ác quỷ trên Server...")
+    end
+})
+
+-- 6. Khởi tạo Menu
+OrionLib:Init()
